@@ -6,7 +6,6 @@
     <title>구구단</title>
     <link rel="stylesheet" type="text/css" href="gugudan.css">
     <style>
-        /* CSS의 tbody tr:hover 효과가 td의 배경색(#eee)에 가려지지 않도록 보완 */
         tbody tr:hover td {
             background: pink;
         }
