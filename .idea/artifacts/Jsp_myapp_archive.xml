@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Jsp:myapp archive">
+    <output-path>$PROJECT_DIR$/out/artifacts/Jsp_myapp_archive</output-path>
+    <root id="archive" name="Jsp_myapp archive.war">
+      <element id="artifact" artifact-name="Jsp:myapp" />
+    </root>
+  </artifact>
+</component>
