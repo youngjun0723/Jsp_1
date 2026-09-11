@@ -15,3 +15,4 @@ major: <%=major%><br>
 hobby: <%for(int i = 0; i < hobby.length; i++) { %><br>
             <%=hobby[i]%>&nbsp;
        <%}%>
+<%@ include file="/common/theme.jsp" %>

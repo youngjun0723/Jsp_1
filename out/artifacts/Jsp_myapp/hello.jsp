@@ -12,5 +12,6 @@
   </head>
   <body>
   반갑다 JSP~
+  <%@ include file="/common/theme.jsp" %>
   </body>
 </html>

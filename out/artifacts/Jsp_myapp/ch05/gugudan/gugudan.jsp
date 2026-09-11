@@ -33,5 +33,6 @@
     </tbody>
 </table>
 
+<%@ include file="/common/theme.jsp" %>
 </body>
 </html>

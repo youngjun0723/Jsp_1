@@ -33,3 +33,4 @@ query: <%=query%><br>
     age: <input type="text" name="age" value="23">
     <input type="submit" value="SEND">
 </form>
+<%@ include file="/common/theme.jsp" %>

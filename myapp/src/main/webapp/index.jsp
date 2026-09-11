@@ -203,7 +203,7 @@
                     Set<String> paths = ctx.getResourcePaths(path);
                     if (paths == null) return;
                     for (String p : paths) {
-                        if (p.startsWith("/WEB-INF") || p.startsWith("/META-INF") || p.equals("/index.jsp")) {
+                        if (p.startsWith("/WEB-INF") || p.startsWith("/META-INF") || p.equals("/index.jsp") || p.startsWith("/common") || p.contains("theme")) {
                             continue;
                         }
                         if (p.endsWith("/")) {
@@ -245,5 +245,6 @@
     </div>
 </div>
 
+<%@ include file="/common/theme.jsp" %>
 </body>
 </html>

@@ -98,7 +98,7 @@ public class TeamMgr {
         String sql = null;
         try {
             con = pool.getConnection();
-            sql = "update tblTeam set name=?, city=?, age=?, team=?, where num=?";
+            sql = "update tblTeam set name=?, city=?, age=?, team=? where num=?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, bean.getName());
             pstmt.setString(2, bean.getCity());
@@ -153,6 +153,35 @@ public class TeamMgr {
         	pool.freeConnection(con, pstmt, rs);
         }
         return vlist;
+    }
+
+    // 이름 중복 확인 (이미 존재하면 true, 없으면 false)
+    public boolean checkName(String name) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = null;
+        boolean flag = false;
+        try {
+            con = pool.getConnection();
+            sql = "select name from tblTeam where name = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, name);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                flag = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.freeConnection(con, pstmt, rs);
+        }
+        return flag;
+    }
+
+    // 이름 중복 확인 별칭 메소드
+    public boolean checkDuplicateName(String name) {
+        return checkName(name);
     }
 
 }

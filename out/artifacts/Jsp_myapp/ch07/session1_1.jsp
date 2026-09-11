@@ -24,3 +24,4 @@
     세션의 시간이 경과됐거나, 다른 이유로 연결을 지속할 수 없습니다.<br>
     <a href="session1.html">입력폼</a>
 <%}%>
+<%@ include file="/common/theme.jsp" %>

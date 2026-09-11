@@ -13,4 +13,5 @@
 <h3>SimpleBean1</h3>
 msg: <%=bean.getMsg()%><br>
 cnt: <%=bean.getCnt()%><br>
+<%@ include file="/common/theme.jsp" %>
 

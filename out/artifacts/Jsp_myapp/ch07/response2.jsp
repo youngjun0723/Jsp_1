@@ -15,3 +15,4 @@
     response.setDateHeader("Expires", 0);//캐쉬의 만료일을 0으로 세팅 -> 반드시 서버 요청
 %>
 response2.jsp
+<%@ include file="/common/theme.jsp" %>

@@ -1,0 +1,11 @@
+<%@ page import="ch09.MUtil" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="mgr" class="ch09.TeamMgr"/>
+<%
+    int num = 0;
+    if(request.getParameter("num")!=null && MUtil.isNumeric(request.getParameter("num"))) {
+        num = MUtil.parseInt(request, "num");
+        mgr.deleteTeam(num);
+    }
+    response.sendRedirect("teamList.jsp");
+%>

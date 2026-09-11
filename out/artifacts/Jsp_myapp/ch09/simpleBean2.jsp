@@ -10,3 +10,4 @@
 <h3>SimpleBean2</h3>
 msg: <jsp:getProperty name="bean" property="msg"/><br>
 cnt: <jsp:getProperty name="bean" property="cnt"/><br>
+<%@ include file="/common/theme.jsp" %>

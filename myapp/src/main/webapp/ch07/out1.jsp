@@ -23,3 +23,4 @@
     <% for(String s : sub) { %>
         <%=s%> <br>
     <%} %>
+<%@ include file="/common/theme.jsp" %>

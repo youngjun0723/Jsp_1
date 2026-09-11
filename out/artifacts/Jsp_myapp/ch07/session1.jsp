@@ -31,3 +31,4 @@
     <input type="radio" name="fruit" value="orange">오렌지<p/>
     <input type="submit" value="결과보기">
 </form>
+<%@ include file="/common/theme.jsp" %>

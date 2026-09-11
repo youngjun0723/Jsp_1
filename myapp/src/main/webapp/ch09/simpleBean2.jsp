@@ -1,12 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!-- SimpleBean bean = new SimpleBean(); 랑 같은 의미 -->
+<!-- simpleBean2.jsp -->
+<%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="bean" class="ch09.SimpleBean"/>
-
-<%--<jsp:setProperty name="bean" property="msg"/>--%>
-<%--<jsp:setProperty name="bean" property="cnt"/>--%>
-
-<!-- * : private 모든 것 수용 -->
-<jsp:setProperty name="bean" property="*"/>
+<!-- *: private 모든것 수용 -->
+<jsp:setProperty property="*" name="bean"/>
 <h3>SimpleBean2</h3>
-msg: <jsp:getProperty name="bean" property="msg"/><br>
-cnt: <jsp:getProperty name="bean" property="cnt"/><br>
+msg: <jsp:getProperty property="msg" name="bean"/><br>
+cnt: <jsp:getProperty property="cnt" name="bean"/><br>

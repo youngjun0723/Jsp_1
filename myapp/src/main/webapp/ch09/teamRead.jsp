@@ -4,59 +4,73 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 <jsp:useBean id="mgr" class="ch09.TeamMgr"/>
 <%
-	int num = 0;
-	TeamBean bean = null;
-	if(request.getParameter("num")==null) {
-		// num값이 정상적으로 넘어오지 않을 때
-		response.sendRedirect("teamList.jsp");
-		return;
-	} else if(!MUtil.isNumeric((request.getParameter("num")))) {
-		//숫자의 형태의 num이 아닐 때
-		response.sendRedirect("teamList.jsp");
-		return;
-	} else {
-		num = MUtil.parseInt(request, "num");
-		bean = mgr.getTeam(num);
-	}
+		int num = 0;
+		TeamBean bean = null;
+		if(request.getParameter("num")==null){
+			//num값이 정상적으로 남어오지 않을때
+			response.sendRedirect("teamList.jsp");
+			return;
+		}else if(!MUtil.isNumeric(request.getParameter("num"))){
+			//숫자의 형태의 num이 아닐때
+			response.sendRedirect("teamList.jsp");
+			return;
+		}else{
+			num = MUtil.parseInt(request, "num");
+			bean = mgr.getTeam(num);
+		}
 %>
-
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Team Mgr</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.tailwindcss.com"></script>
+<jsp:include page="themeHead.jsp"/>
 </head>
-<body>
-<div align="center">
-<h1>Team Read</h1>
-<table border="1">
-	<tr>
-		<td>번호</td>
-		<td><%=bean.getNum()%></td>
-	</tr>
-	<tr>
-		<td>이름</td>
-		<td><%=bean.getName()%></td>
-	</tr>
-	<tr>
-		<td>사는곳</td>
-		<td><%=bean.getCity()%></td>
-	</tr>
-	<tr>
-		<td>나이</td>
-		<td><%=bean.getAge()%></td>
-	</tr>
-	<tr>
-		<td>팀명</td>
-		<td><%=bean.getTeam()%></td>
-	</tr>
-</table><p/>
-<a href="teamList.jsp">LIST</a>&nbsp;&nbsp;
-<a href="teamInsert.jsp">INSERT</a>&nbsp;&nbsp;
-<a href="teamUpdate.jsp?num=<%=num%>">UPDATE</a>&nbsp;&nbsp;
-<a href="teamDelete.jsp?num=<%=num%>">DELETE</a>&nbsp;&nbsp;
-<a href="teamDelete?num=<%=num%>">DELETE2</a>&nbsp;&nbsp;
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50 text-slate-800 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 dark:text-slate-100">
+<div class="mx-auto max-w-lg px-4 py-10">
+	<header class="mb-8">
+		<p class="text-sm font-medium uppercase tracking-wider text-indigo-500 dark:text-indigo-400">Team Manager</p>
+		<h1 class="mt-1 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Team Read</h1>
+		<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">선택한 팀원 상세 정보입니다.</p>
+	</header>
+
+	<div class="overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700">
+		<dl class="divide-y divide-slate-100 dark:divide-slate-700">
+			<div class="grid grid-cols-3 px-5 py-3">
+				<dt class="text-sm font-semibold text-slate-500 dark:text-slate-400">번호</dt>
+				<dd class="col-span-2 text-sm font-medium text-slate-900 dark:text-white"><%=bean.getNum()%></dd>
+			</div>
+			<div class="grid grid-cols-3 px-5 py-3">
+				<dt class="text-sm font-semibold text-slate-500 dark:text-slate-400">이름</dt>
+				<dd class="col-span-2 text-sm font-medium text-slate-900 dark:text-white"><%=bean.getName()%></dd>
+			</div>
+			<div class="grid grid-cols-3 px-5 py-3">
+				<dt class="text-sm font-semibold text-slate-500 dark:text-slate-400">사는곳</dt>
+				<dd class="col-span-2 text-sm"><%=bean.getCity()%></dd>
+			</div>
+			<div class="grid grid-cols-3 px-5 py-3">
+				<dt class="text-sm font-semibold text-slate-500 dark:text-slate-400">나이</dt>
+				<dd class="col-span-2 text-sm"><%=bean.getAge()%></dd>
+			</div>
+			<div class="grid grid-cols-3 px-5 py-3">
+				<dt class="text-sm font-semibold text-slate-500 dark:text-slate-400">팀명</dt>
+				<dd class="col-span-2">
+					<span class="inline-flex rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium text-indigo-700 dark:bg-indigo-900/70 dark:text-indigo-200"><%=bean.getTeam()%></span>
+				</dd>
+			</div>
+		</dl>
+	</div>
+
+	<nav class="mt-6 flex flex-wrap justify-center gap-2">
+		<a href="teamList.jsp" class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-indigo-400 dark:hover:text-indigo-300">LIST</a>
+		<a href="teamInsert.jsp" class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-indigo-400 dark:hover:text-indigo-300">INSERT</a>
+		<a href="teamUpdate.jsp?num=<%=num%>" class="rounded-lg bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500">UPDATE</a>
+		<a href="teamDelete.jsp?num=<%=num%>" class="rounded-lg bg-rose-600 px-3 py-2 text-sm font-semibold text-white hover:bg-rose-500">DELETE</a>
+		<a href="teamDelete?num=<%=num%>" class="rounded-lg bg-rose-100 px-3 py-2 text-sm font-semibold text-rose-700 hover:bg-rose-200 dark:bg-rose-950 dark:text-rose-200 dark:hover:bg-rose-900">DELETE2</a>
+	</nav>
 </div>
+<jsp:include page="themeToggle.jsp"/>
 </body>
 </html>
